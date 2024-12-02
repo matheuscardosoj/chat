@@ -1,0 +1,22 @@
+/* Estilos para a Mensagem */
+.message {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.message p {
+    margin: 0;
+}
+
+.message.user {
+    background-color: rgb(249, 249, 247);
+    text-align: right;
+    color: black;
+}
+
+.message.other {
+    text-align: left;
+    background-color: rgba(255, 226, 226, 0.45);
+}
