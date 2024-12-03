@@ -1,22 +1,56 @@
 /* Estilos para a Mensagem */
 .message {
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: Arial, sans-serif;
-}
-
-.message p {
-    margin: 0;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px;
+    max-width: 35%;
+    word-break: break-all;
+    position: relative;
 }
 
 .message.user {
-    background-color: rgb(249, 249, 247);
-    text-align: right;
-    color: black;
+    background-color: rgb(208, 250, 197);
+    align-self: flex-end;
 }
 
 .message.other {
-    text-align: left;
-    background-color: rgba(255, 226, 226, 0.45);
+    background-color: rgba(206, 206, 206, 0.45);
+    align-self: flex-start;
+}
+
+.username {
+    font-weight: bold;
+    color: #000000;
+    font-size: small;
+}
+
+.emoji {
+    font-size: 1em;
+    position: absolute;
+    bottom: calc(0px - .5em);
+}
+
+.message.user .emoji {
+    right: calc(0px - .5em);
+}
+
+.message.other .emoji {
+    left: calc(0px - .5em);
+}
+
+.message.user .text {
+    align-self: end;
+}
+
+.message.other .text {
+    align-self: start;
+}
+
+.text {
+    margin: 0;
 }

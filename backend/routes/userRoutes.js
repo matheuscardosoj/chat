@@ -1,11 +1,9 @@
-const express = require("express");
-const User = require("../models/user");
-const logger = require("../config/logger");
-const { Op } = require("sequelize");
+import express from "express";
+import { Op } from "sequelize";
+import User from "../models/user.js";
+import logger from "../config/logger.js";
 
 const router = express.Router();
-
-const userIDsLogados = [];
 
 router.post("/", async (req, res) => {
     try {
@@ -43,49 +41,7 @@ router.post("/login", async (req, res) => {
         return res.status(401).json({ error: "Usuário ou senha inválidos" });
     }
 
-    if (userIDsLogados.find((u) => u.email === email)) {
-        return res.status(401).json({ error: "Usuário já está logado" });
-    }
-
-    userIDsLogados.push(user.id);
-
     res.status(200).json(user);
 });
 
-router.post("/logout", async (req, res) => {
-    const { userId } = req.body;
-
-    const index = userIDsLogados.indexOf(userId);
-
-    if (index === -1) {
-        return res.status(404).json({ error: "Usuário não está logado" });
-    }
-
-    userIDsLogados.splice(index, 1);
-
-    res.status(200).json({ message: "Usuário deslogado com sucesso" });
-});
-
-router.get("/logged", async (req, res) => {
-    const { userId } = req.body;
-
-    if (userIDsLogados.includes(userId)) {
-        return res.status(200).json({ logged: true });
-    }
-
-    return res.status(200).json({ logged: false });
-});
-
-router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-
-    const user = await User.findByPk(id);
-
-    if (!user) {
-        return res.status(404).json({ error: "Usuário não encontrado" });
-    }
-
-    res.status(200).json(user);
-});
-
-module.exports = router;
+export default router;

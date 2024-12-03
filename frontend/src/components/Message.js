@@ -1,10 +1,25 @@
 import React from "react";
 import "./Message.css";
 
-function Message({ content, isUser }) {
+function Message({ content, mood, isUser, userName }) {
+    const getEmoji = (mood) => {
+        switch (mood) {
+            case "happy":
+                return "😁";
+            case "neutral":
+                return "🙂";
+            case "sad":
+                return "😔";
+            default:
+                return "";
+        }
+    };
+
     return (
         <div className={`message ${isUser ? "user" : "other"}`}>
-            <p>{content}</p>
+            {isUser ? null : <span className="username">{userName}</span>}
+            <p className="text">{content}</p>
+            {mood && <span className="emoji">{getEmoji(mood)}</span>}
         </div>
     );
 }

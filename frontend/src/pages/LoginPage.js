@@ -38,7 +38,7 @@ function LoginPage() {
 
     return (
         <>
-            <button className="button" onClick={handleBack}>
+            <button className="button buttonVoltar" onClick={handleBack}>
                 Voltar
             </button>
 

@@ -1,7 +1,7 @@
 /* RegisterPage.css */
 
 .register-container {
-  width: 60vw;
+  width: fit-content;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;

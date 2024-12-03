@@ -1,9 +1,12 @@
-const admin = require("firebase-admin");
-const serviceAccount = require("./firebase-service-account.json");
+import admin from "firebase-admin";
+import { readFile } from "fs/promises";
+
+const serviceAccount = JSON.parse(
+    await readFile(new URL("./firebase-service-account.json", import.meta.url))
+);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
 });
 
-const db = admin.firestore();
-module.exports = db;
+export default admin.firestore();
